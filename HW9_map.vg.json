@@ -7,7 +7,7 @@
     "type": "equalEarth"
   },
   "data": {
-    "url": "malaysia_map.json",
+    "url": "https://raw.githubusercontent.com/Kevinlkl/FIT3179_hw9/main/malaysia_map.json",
     "format": {
       "type": "topojson",
       "feature": "my"
@@ -18,7 +18,7 @@
       "lookup": "properties.name",
       "from": {
         "data": {
-          "url": "lfs_2023_both.csv",
+          "url": "https://raw.githubusercontent.com/Kevinlkl/FIT3179_hw9/main/lfs_2023_both.csv",
           "format": {"type": "csv"}
         },
         "key": "state",
