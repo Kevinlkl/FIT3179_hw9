@@ -2,52 +2,69 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Employment Ratio by State in Malaysia (2023)",
   "width": 800,
-  "height": 600,
+  "height": 400,
   "projection": {
-    "type": "equalEarth"
+    "type": "equalEarth",
+    "center": [109.25, 4],
+    "scale": 2650
   },
-  "data": {
-    "url": "https://raw.githubusercontent.com/Kevinlkl/FIT3179_hw9/main/malaysia_map.json",
-    "format": {
-      "type": "topojson",
-      "feature": "my"
-    }
-  },
-  "transform": [
+  "layer": [
     {
-      "lookup": "properties.name",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/Kevinlkl/FIT3179_hw9/main/lfs_2023_both.csv",
-          "format": {"type": "csv"}
-        },
-        "key": "state",
-        "fields": ["ep_ratio"]
+      "data": {
+        "graticule": {"step": [1, 1]}
       },
-      "default": null
-    }
-  ],
-  "mark": {
-    "type": "geoshape",
-    "stroke": "white",
-    "strokeWidth": 1
-  },
-  "encoding": {
-    "color": {
-      "field": "ep_ratio",
-      "type": "quantitative",
-      "scale": {
-        "type": "linear",
-        "range": ["#fee5d9", "#fcae91", "#fb6a4a", "#de2d26", "#a50f15"],
-        "domain": [50, 80]
-      },
-      "legend": {
-        "title": "Employment Ratio (%)"
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "lightgray",
+        "strokeWidth": 0.5
       }
     },
-    "tooltip": [
-      {"field": "properties.name", "type": "nominal", "title": "State"},
-      {"field": "ep_ratio", "type": "quantitative", "title": "Employment Ratio (%)", "format": ".1f"}
-    ]
-  }
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Kevinlkl/FIT3179_hw9/main/malaysia_map.json",
+        "format": {
+          "type": "topojson",
+          "feature": "my"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Kevinlkl/FIT3179_hw9/main/lfs_2023_both.csv",
+              "format": {"type": "csv"}
+            },
+            "key": "state",
+            "fields": ["ep_ratio"]
+          },
+          "default": null
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "color": {
+          "field": "ep_ratio",
+          "type": "quantitative",
+          "scale": {
+            "type": "linear",
+            "range": ["#fee5d9", "#fcae91", "#fb6a4a", "#de2d26", "#a50f15"],
+            "domain": [50, 80]
+          },
+          "legend": {
+            "title": "Employment Ratio (%)"
+          }
+        },
+        "tooltip": [
+          {"field": "properties.name", "type": "nominal", "title": "State"},
+          {"field": "ep_ratio", "type": "quantitative", "title": "Employment Ratio (%)", "format": ".1f"}
+        ]
+      }
+    }
+  ]
 }
