@@ -1,14 +1,23 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Employment Ratio by State in Malaysia (2023)",
-  "width": 800,
+  "width": 950,
   "height": 400,
   "projection": {
-    "type": "equalEarth",
-    "center": [109.25, 4],
+    "type": "mercator",
+    "center": [109.5, 4],
     "scale": 2650
   },
   "layer": [
+    {
+      "data": {
+        "sphere": true
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e6f3ff"
+      }
+    },
     {
       "data": {
         "graticule": {"step": [1, 1]}
@@ -53,7 +62,7 @@
           "type": "quantitative",
           "scale": {
             "type": "linear",
-            "range": ["#fee5d9", "#fcae91", "#fb6a4a", "#de2d26", "#a50f15"],
+            "range": ["#e5f5e0", "#a1d99b", "#74c476", "#41ab5d", "#238b45"],
             "domain": [50, 80]
           },
           "legend": {
